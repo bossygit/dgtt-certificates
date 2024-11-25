@@ -7,36 +7,59 @@ function CertificateForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Certificat généré pour :", patientName, birthDate, results);
-    // Ajoutez ici l'appel API au backend
+    console.log("Certificate generated for:", patientName, birthDate, results);
   };
 
   return (
-    <div>
-      <h2>Créer un Certificat Médical</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Nom du Patient"
-          value={patientName}
-          onChange={(e) => setPatientName(e.target.value)}
-          required
-        />
-        <input
-          type="date"
-          placeholder="Date de Naissance"
-          value={birthDate}
-          onChange={(e) => setBirthDate(e.target.value)}
-          required
-        />
-        <textarea
-          placeholder="Résultats Médicaux"
-          value={results}
-          onChange={(e) => setResults(e.target.value)}
-          required
-        />
-        <button type="submit">Générer</button>
-      </form>
+    <div className="min-h-screen bg-gray-100 p-6">
+      <div className="max-w-2xl mx-auto bg-white p-6 rounded shadow-lg">
+        <h2 className="text-2xl font-bold mb-4">Generate Certificate</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Patient Name
+            </label>
+            <input
+              type="text"
+              placeholder="Enter patient's name"
+              value={patientName}
+              onChange={(e) => setPatientName(e.target.value)}
+              required
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Birth Date
+            </label>
+            <input
+              type="date"
+              value={birthDate}
+              onChange={(e) => setBirthDate(e.target.value)}
+              required
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700">
+              Results
+            </label>
+            <textarea
+              placeholder="Enter results"
+              value={results}
+              onChange={(e) => setResults(e.target.value)}
+              required
+              className="w-full p-2 border border-gray-300 rounded mt-1"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white p-2 rounded hover:bg-green-700"
+          >
+            Generate
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
